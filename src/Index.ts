@@ -3,9 +3,11 @@ import { config } from "dotenv";
 
 config();
 
+//import environment variables from .env file
 const BOT_TOKEN: any = process.env.BOT_TOKEN;
 const CLIENT_ID: any = process.env.CLIENT_ID
 
+//initialize the discord bot client
 const client: any = new discord.Client({
   intents: [
     discord.GatewayIntentBits.Guilds,
@@ -14,19 +16,18 @@ const client: any = new discord.Client({
   ]
 });
 
-
+//Login and start the bot
 function start() {
   client.login(BOT_TOKEN);
   console.log(`Ai is successfully logged ┃✅`)
-  
 }
 start();
 
 
 const commands = [
   {
-    name: 'ping',
-    description: 'Replies with Pong!',
+    name: 'events',
+    description: 'displays the latest events of dual link',
   },
 ];
 
@@ -48,8 +49,7 @@ client.on('ready', () => {
 client.on('interactionCreate', async (interaction: { isChatInputCommand: () => any; commandName: string; reply: (arg0: string) => any; }) => {
   if (!interaction.isChatInputCommand()) return;
 
-  if (interaction.commandName === 'ping') {
-    await interaction.reply('Pong!');
+  if (interaction.commandName === 'events') {
+    await interaction.reply("Link into the vraaaaaains!... oh hi, unfortunately im not ready yet MohMost is not done with me yet. Can't wait to help you become the duel master 🤗 !");
   }
 });
-
